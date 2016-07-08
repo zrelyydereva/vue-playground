@@ -1,0 +1,90 @@
+@flex_count: 8;
+.flex_holder {
+	display: flex;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	align-content: space-between;
+}
+
+.flex_inline_holder {
+	display: inline-flex;
+	display: -webkit-inline-flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	align-content: space-between;
+}
+
+.header_half {
+	min-width: @halfwidth;
+	padding-top: 4px;
+	overflow-x: hidden;
+}
+
+.sh_flex(@len) {
+	box-sizing: border-box;
+	flex-basis: (100% / @flex_count * @len );
+}
+
+.sh_flex_025 {
+	.sh_flex(0.25);
+}
+
+.sh_flex_05 {
+	.sh_flex(0.5);
+}
+
+.sh_flex_075 {
+	.sh_flex(0.75);
+}
+
+.sh_flex_1 {
+	.sh_flex(1);
+}
+
+.sh_flex_15 {
+	.sh_flex(1.5);
+}
+
+.sh_flex_175 {
+	.sh_flex(1.5);
+}
+
+.sh_flex_2 {
+	.sh_flex(2);
+}
+
+.sh_flex_3 {
+	.sh_flex(3);
+}
+
+.sh_flex_4 {
+	.sh_flex(4);
+}
+
+.sh_flex_5 {
+	.sh_flex(5);
+}
+
+.sh_flex_6 {
+	.sh_flex(6);
+}
+
+.sh_flex_7 {
+	.sh_flex(7);
+}
+
+.sh_flex_8 {
+	.sh_flex(8);
+}
+
+.sh_flex_9 {
+	.sh_flex(9);
+}
+
+.sh_flex_10 {
+	.sh_flex(10);
+}
+.flex_spacer {
+	height: 5px;
+}

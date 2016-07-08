@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4db6ac">
+    <title>ks-ColorTool</title>
+    <link rel="stylesheet" href="css/base.css">
+<!--
+    <link rel="stylesheet" href="css/material-icons.css">
+-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="main">
+        <kl-test></kl-test>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        //var demo = require("../vue/demo.js");
+        //Vue.component("ks-color",require("../vue/ks-color.vue"));
+        var component = Vue.extend({
+            template: "<span>{{all}}</span>",
+            props: {
+                    lat: "",
+                    lon: "",
+                    alt: "",
+                    all: "",
+                
+            },
+            created: function(f) {
+                this.all = "wait...";
+            },
+            ready: function() {
+                navigator.geolocation.getCurrentPosition(this.successCallback, this.errorCallback);
+            },
+            methods: {
+                successCallback: function successCallback(position) {
+                    this.lat = position.coords.latitude;
+                    this.lon = position.coords.longitude;
+                    this.alt = position.coords.altitude;
+                    this.all = this.lat + ";" + this.lon + ";" + this.alt;
+                },
+                errorCallback: function errorCallback(error) {
+                    switch (error.code) {
+                        case 1:
+                            this.all = "位置情報の利用が許可されていません";
+                            break;
+                        case 2:
+                            this.all = "デバイスの位置が判定できません";
+                            break;
+                        case 3:
+                            this.all = "タイムアウトしました";
+                            break;
+                        default:
+                            this.all="xxx";
+                    }
+                }
+            }
+        });
+
+        Vue.component('kl-test', component);
+        var vm = new Vue({
+            el: "#main",
+            data: {
+                api: {
+                    enabled: false,
+                    api: null
+                },
+                mode: ""
+            },
+            created: function() {
+                var self = this;
+                //initialization Here;
+                try {
+
+                } catch (ex) {
+                    console.log("exception.." + ex);
+                }
+            },
+            ready: function() {
+                this.mode = "demo1";
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+
+</html>
